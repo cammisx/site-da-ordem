@@ -1,0 +1,65 @@
+/* src/styles/themes/classified.css
+   tema: arquivos confidenciais (padrão)
+   ideia: tudo visual é variável. a UI usa as variáveis e não "cores fixas".
+*/
+
+:root {
+  /* cores base (papel / pasta / tinta) */
+  --bg: #6f5e49;              /* fundo (mesa/papel escuro) */
+  --folder: #cbb58a;          /* pasta manila */
+  --folder-edge: #b59b73;     /* sombra/contorno da pasta */
+  --label: #e9dcc3;           /* etiqueta (papel mais claro) */
+  --label-edge: #d1c2a7;      /* borda/sombra da etiqueta */
+
+  --ink: #1a1612;             /* texto principal */
+  --ink-soft: rgba(26, 22, 18, 0.72);
+
+  /* destaque institucional */
+  --accent: #7a1d1d;          /* vermelho do carimbo */
+  --accent-soft: rgba(122, 29, 29, 0.28);
+
+  /* inputs / botões */
+  --field-bg: rgba(255, 255, 255, 0.25);
+  --field-border: rgba(26, 22, 18, 0.35);
+  --field-border-focus: rgba(26, 22, 18, 0.65);
+
+  --btn-bg: rgba(203, 181, 138, 0.55);
+  --btn-border: rgba(26, 22, 18, 0.55);
+  --btn-text: var(--ink);
+
+  /* links */
+  --link: rgba(26, 22, 18, 0.82);
+  --link-hover: rgba(26, 22, 18, 1);
+
+  /* sombras e relevo */
+  --shadow-1: 0 12px 28px rgba(0, 0, 0, 0.25);
+  --shadow-2: 0 22px 60px rgba(0, 0, 0, 0.22);
+
+  /* raios de borda (bem sutil, “analógico”) */
+  --r-folder: 14px;
+  --r-label: 10px;
+  --r-btn: 6px;
+
+  /* medidas padrão do layout (desktop primeiro) */
+   --page-max: 1700px;
+  --card-max: 1420px;
+  --pad-1: 14px;
+  --pad-2: 22px;
+  --pad-3: 34px;
+
+
+  /* tipografia (a gente troca depois por fonte real) */
+  --font-title: ui-serif, "Georgia", "Times New Roman", serif;
+  --font-body: ui-monospace, "Courier New", monospace;
+
+  /* ruído leve (ligaremos depois no base.css) */
+  --grain-opacity: 0.12;
+}
+
+/* opcional: uma classe de tema pra depois permitir troca dinâmica
+   (quando a gente tiver seleção de tema, vamos aplicar no <body>)
+*/
+body.theme-classified {
+  background: var(--bg);
+  color: var(--ink);
+}
