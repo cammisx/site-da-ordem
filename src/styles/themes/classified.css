@@ -49,8 +49,10 @@
 
 
   /* tipografia (a gente troca depois por fonte real) */
-  --font-title: ui-serif, "Georgia", "Times New Roman", serif;
-  --font-body: ui-monospace, "Courier New", monospace;
+  --font-title: "New Tegomin", serif;
+
+
+  --font-body: "New Tegomin", serif;
 
   /* ruído leve (ligaremos depois no base.css) */
   --grain-opacity: 0.12;

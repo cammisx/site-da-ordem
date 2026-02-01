@@ -17,6 +17,11 @@ function App() {
             alt=""
             aria-hidden="true"
           />
+          {/* título na aba da pasta */}
+<div className="login-folder-title">
+  ORDEM PARANORMAL
+</div>
+
 
           {/* carimbo CONFIDENCIAL / TOP SECRET */}
           <img
