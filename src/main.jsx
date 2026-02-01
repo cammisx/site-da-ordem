@@ -5,7 +5,7 @@ import App from "./App.jsx";
 /* estilos globais (1º tema, 2º base)
    ordem importa: o tema define variáveis, o base usa as variáveis
 */
-import "./styles/themes/classified.css";
+import "./styles/themes/terminal95.css";
 import "./styles/base/base.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

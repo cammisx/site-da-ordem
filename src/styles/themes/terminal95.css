@@ -1,0 +1,59 @@
+/* src/styles/themes/terminal95.css
+   tema: terminal clássico + Windows 95/98
+   - verde terminal
+   - janela old-school
+   - nada de preto puro (um pouquinho de verde no fundo)
+*/
+
+:root {
+  /* fundo geral */
+  --bg: #020a05;
+  --bg-2: #03110a;
+
+  /* texto */
+  --ink: #00ff66;
+  --ink-soft: rgba(0, 255, 102, 0.72);
+  --ink-dim: rgba(0, 255, 102, 0.55);
+
+  /* UI Win95 */
+  --win-surface: #c0c0c0;
+  --win-surface-2: #d9d9d9;
+  --win-title: #00008b; /* azul barra do win95 */
+  --win-title-text: #ffffff;
+  --win-border-dark: #404040;
+  --win-border-light: #ffffff;
+  --win-shadow: #808080;
+
+  /* terminal dentro da janela */
+  --term-bg: #001b0d;
+  --term-border: rgba(0, 255, 102, 0.25);
+
+  /* botões / links */
+  --btn-bg: #c0c0c0;
+  --btn-text: #000000;
+  --btn-border: #000000;
+  --link: var(--ink);
+  --link-hover: #b6ffd2;
+
+  /* layout */
+  --page-max: 1200px;
+  --card-max: 860px;
+  --pad-1: 10px;
+  --pad-2: 16px;
+  --pad-3: 24px;
+
+  /* tipografia */
+  --font-title: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --font-body: var(--font-title);
+
+  /* ruído / CRT */
+  --grain-opacity: 0.14;
+  --scanline-opacity: 0.12;
+  --glow-opacity: 0.22;
+}
+
+body.theme-terminal95 {
+  background: var(--bg);
+  color: var(--ink);
+}
