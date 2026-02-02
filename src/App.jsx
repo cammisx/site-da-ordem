@@ -30,11 +30,11 @@ function BootSequence({ onDone, onNoise }) {
   const lines = useMemo(
     () => [
       "ORDEM BIOS v0.98 (c) 1998",
-      "Detectando dispositivos... OK",
+      "Detectando dispositivos OK",
       "Memória: 65536K OK",
-      "Iniciando ORDEM.EXE ...",
+      "Iniciando ORDEM.EXE ",
       "Carregando módulos: [AUTH] [ARQUIVOS] [LOG]",
-      "Sincronizando...",
+      "Sincronizando",
       "Pronto.",
     ],
     []
@@ -133,7 +133,7 @@ function WindowFrame({ title, rightControls, children, onNoise }) {
   );
 }
 
-function LoginScreen({ onLoggedIn, onNoise }) {
+function LoginScreen({ onLoggedIn, onNoise, soundEnabled, setSound }) {
   const [mode, setMode] = useState("login"); // login | signup | reset
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -191,7 +191,20 @@ function LoginScreen({ onLoggedIn, onNoise }) {
       <WindowFrame
         title="ORDEM.EXE — TERMINAL DE ACESSO"
         onNoise={onNoise}
-        rightControls={null}
+        rightControls={
+          <button
+            type="button"
+            className="win95-btn"
+            aria-label={soundEnabled ? "som ligado" : "som desligado"}
+            title={soundEnabled ? "Som: ON" : "Som: OFF"}
+            onClick={() => {
+              onNoise(playClick);
+              setSound(!soundEnabled);
+            }}
+          >
+            {soundEnabled ? "🔊" : "🔇"}
+          </button>
+        }
       >
         <form className="terminal" onSubmit={submit}>
           <div className="terminal-header">
@@ -243,11 +256,19 @@ function LoginScreen({ onLoggedIn, onNoise }) {
 
             <button
               type="button"
-              className="term-btn"
+              className="term-btn google"
               onMouseDown={() => onNoise(playClick)}
               onClick={google}
             >
-              ENTRAR COM GOOGLE
+              <span className="google-ic" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#EA4335" d="M24 9.5c3.54 0 6.7 1.22 9.18 3.22l6.86-6.86C35.86 2.2 30.3 0 24 0 14.62 0 6.54 5.38 2.56 13.22l8 6.22C12.68 13.06 17.9 9.5 24 9.5z"/>
+                  <path fill="#4285F4" d="M46.1 24.5c0-1.66-.14-2.9-.44-4.18H24v7.9h12.6c-.25 2.06-1.62 5.16-4.66 7.24l7.14 5.54c4.16-3.86 6.02-9.56 6.02-16.5z"/>
+                  <path fill="#FBBC05" d="M10.56 28.44a14.9 14.9 0 0 1 0-8.94l-8-6.22A23.94 23.94 0 0 0 0 24c0 3.88.94 7.56 2.56 10.72l8-6.28z"/>
+                  <path fill="#34A853" d="M24 48c6.3 0 11.86-2.08 15.82-5.66l-7.14-5.54c-1.92 1.34-4.5 2.26-8.68 2.26-6.1 0-11.32-3.56-13.44-8.94l-8 6.28C6.54 42.62 14.62 48 24 48z"/>
+                </svg>
+              </span>
+              <span>Continuar com Google</span>
             </button>
 
             <div className="links" aria-label="ações rápidas">
@@ -260,7 +281,7 @@ function LoginScreen({ onLoggedIn, onNoise }) {
                     setMode("signup");
                   }}
                 >
-                  CADASTRAR
+                  CADASTRAR NOVO AGENTE
                 </a>
               ) : (
                 <a
@@ -298,52 +319,90 @@ function LoginScreen({ onLoggedIn, onNoise }) {
 function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
   const MENU = useMemo(
     () => [
-      { key: "origens", label: "ORIGENS" },
-      { key: "classes", label: "CLASSES" },
       { key: "arquivos", label: "ARQUIVOS" },
+      { key: "investigacoes", label: "INVESTIGAÇÕES" },
       { key: "sair", label: "SAIR" },
     ],
     []
   );
 
-  const ORIGENS = useMemo(
+  const INVESTIGACOES = useMemo(
     () => [
-      { key: "civil", label: "CIVIL" },
-      { key: "agente", label: "AGENTE" },
-      { key: "cultista", label: "CULTISTA" },
-      { key: "sobrevivente", label: "SOBREVIVENTE" },
-    ],
-    []
-  );
-
-  const CLASSES = useMemo(
-    () => [
-      { key: "combatente", label: "COMBATENTE" },
-      { key: "especialista", label: "ESPECIALISTA" },
-      { key: "ocultista", label: "OCULTISTA" },
+      { key: "casos_em_andamento", label: "CASOS EM ANDAMENTO" },
+      { key: "pistas", label: "PISTAS" },
+      { key: "evidencias", label: "EVIDÊNCIAS" },
+      { key: "relatorios", label: "RELATÓRIOS" },
     ],
     []
   );
 
   const [focus, setFocus] = useState("menu"); // menu | list
-  const [selectedMenu, setSelectedMenu] = useState(MENU[0].key);
+  const [selectedMenu, setSelectedMenu] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedItemKey, setSelectedItemKey] = useState(null);
   const [menuIndex, setMenuIndex] = useState(0);
   const [listIndex, setListIndex] = useState(0);
 
-  const list = useMemo(() => {
-    if (selectedMenu === "origens") return ORIGENS;
-    if (selectedMenu === "classes") return CLASSES;
-    if (selectedMenu === "arquivos") {
-      return [
-        { key: "casos", label: "CASOS" },
-        { key: "entidades", label: "ENTIDADES" },
-        { key: "relatorios", label: "RELATÓRIOS" },
-      ];
-    }
-    return [];
-  }, [selectedMenu, ORIGENS, CLASSES]);
+  const FILE_CATEGORIES = useMemo(
+    () => [
+      { key: "origens", label: "ORIGENS" },
+      { key: "classes", label: "CLASSES" },
+      { key: "pericias", label: "PERÍCIAS" },
+      { key: "equipamentos", label: "EQUIPAMENTOS" },
+      { key: "rituais", label: "RITUAIS" },
+    ],
+    []
+  );
 
-  const activeItem = list[listIndex];
+  const FILE_ITEMS = useMemo(
+    () => ({
+      origens: [
+        { key: "civil", label: "CIVIL" },
+        { key: "agente", label: "AGENTE" },
+        { key: "cultista", label: "CULTISTA" },
+        { key: "sobrevivente", label: "SOBREVIVENTE" },
+      ],
+      classes: [
+        { key: "combatente", label: "COMBATENTE" },
+        { key: "especialista", label: "ESPECIALISTA" },
+        { key: "ocultista", label: "OCULTISTA" },
+      ],
+      pericias: [
+        { key: "atletismo", label: "ATLETISMO" },
+        { key: "investigacao", label: "INVESTIGAÇÃO" },
+        { key: "furtividade", label: "FURTIVIDADE" },
+        { key: "ocultismo", label: "OCULTISMO" },
+      ],
+      equipamentos: [
+        { key: "arma_branca", label: "ARMA BRANCA" },
+        { key: "arma_fogo", label: "ARMA DE FOGO" },
+        { key: "protecao", label: "PROTEÇÃO" },
+        { key: "utilitarios", label: "UTILITÁRIOS" },
+      ],
+      rituais: [
+        { key: "conhecimento", label: "CONHECIMENTO" },
+        { key: "energia", label: "ENERGIA" },
+        { key: "morte", label: "MORTE" },
+        { key: "sangue", label: "SANGUE" },
+      ],
+    }),
+    []
+  );
+
+  const list = useMemo(() => {
+    if (!selectedMenu) return [];
+    if (selectedMenu === "investigacoes") return INVESTIGACOES;
+
+    if (selectedMenu === "arquivos") {
+      // 1º nível: categorias; 2º nível: itens dentro da categoria
+      if (!selectedCategory) return FILE_CATEGORIES;
+      return FILE_ITEMS[selectedCategory] || [];
+    }
+
+    return [];
+  }, [selectedMenu, selectedCategory, INVESTIGACOES, FILE_CATEGORIES, FILE_ITEMS]);
+
+  const activeItem = list.find((x) => x.key === selectedItemKey) || list[listIndex];
 
   useKeyDown(
     (e) => {
@@ -384,6 +443,15 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
         if (key === "Escape") {
           e.preventDefault();
           onNoise(playClick);
+
+          // Arquivos: ESC volta do 2º nível (itens) para categorias
+          if (selectedMenu === "arquivos" && selectedCategory) {
+            setSelectedCategory(null);
+            setSelectedItemKey(null);
+            setListIndex(0);
+            return;
+          }
+
           setFocus("menu");
           return;
         }
@@ -399,6 +467,18 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
         }
         if (key === "Enter") {
           e.preventDefault();
+          const picked = MENU[menuIndex].key;
+          setSelectedMenu(picked);
+          setSelectedCategory(null);
+          setSelectedItemKey(null);
+
+          if (picked === "sair") {
+            onNoise(playClick);
+            return onLogout();
+          }
+
+          setFocus("list");
+          setListIndex(0);
           onNoise(playBeep);
         }
       }
@@ -454,6 +534,8 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
                       onMouseDown={() => onNoise(playClick)}
                       onClick={() => {
                         setSelectedMenu(m.key);
+                        setSelectedCategory(null);
+                        setSelectedItemKey(null);
                         if (m.key === "sair") return onLogout();
                         setFocus("list");
                         setListIndex(0);
@@ -470,7 +552,7 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
             </div>
 
             <div className="menu-col">
-              <div className="menu-title">ITENS</div>
+              <div className="menu-title">ITENS{selectedMenu === "arquivos" && selectedCategory ? ` — ${FILE_CATEGORIES.find(c=>c.key===selectedCategory)?.label || ""}` : ""}</div>
               <ul className="menu-list" aria-label="itens" role="listbox">
                 {list.length === 0 ? (
                   <li className="menu-item dim">Selecione um diretório…</li>
@@ -486,6 +568,18 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
                         onClick={() => {
                           setFocus("list");
                           setListIndex(idx);
+                          const picked = it.key;
+
+                          // Arquivos: clique/enter em categoria abre a lista de itens
+                          if (selectedMenu === "arquivos" && !selectedCategory) {
+                            setSelectedCategory(picked);
+                            setSelectedItemKey(null);
+                            setListIndex(0);
+                            onNoise(playBeep);
+                            return;
+                          }
+
+                          setSelectedItemKey(picked);
                           onNoise(playBeep);
                         }}
                         role="option"
@@ -502,7 +596,9 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
             <div className="menu-col panel">
               <div className="menu-title">PAINEL</div>
               <div className="panel-body">
-                {!activeItem ? (
+                {!selectedMenu ? (
+                  <div className="dim">Selecione um diretório…</div>
+                ) : !activeItem ? (
                   <div className="dim">Nenhum item selecionado.</div>
                 ) : (
                   <>
@@ -578,6 +674,8 @@ export default function App() {
               setPhase("app");
             }}
             onNoise={onNoise}
+            soundEnabled={soundEnabled}
+            setSound={setSound}
           />
         )}
 
