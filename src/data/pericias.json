@@ -1,0 +1,659 @@
+[
+  {
+    "id": 1,
+    "nome": "Acrobacia",
+    "atributoId": 2,
+    "descricao": "Você consegue fazer proezas acrobáticas.",
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": true,
+    "kitDePericia": false,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [
+      {
+        "id_teste": 101,
+        "nome": "Amortecer Queda",
+        "descricao": "Ao cair, você pode usar uma reação para testar Acrobacia e reduzir dano de queda: 1d6 + 1d6 a cada 5 acima da DT. Se reduzir a 0, cai de pé.",
+        "dt": {
+          "oficiais": [
+            15
+          ],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": "veterano",
+        "penalidadeDeCarga": true,
+        "kitDePericia": false,
+        "exigenciaKitId": null
+      },
+      {
+        "id_teste": 102,
+        "nome": "Equilíbrio",
+        "descricao": "Ao andar em superfícies precárias, faça testes por ação de movimento. Sucesso: anda metade; falha: não avança; falha por 5+: cai. DTs típicas: 10 (escorregadio), 15 (estreita), 20 (muito estreita). Pode aceitar -1d20 para andar deslocamento total; fica desprevenido e pode precisar retestar ao sofrer dano.",
+        "dt": {
+          "oficiais": [
+            10,
+            15,
+            20
+          ],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": null,
+        "penalidadeDeCarga": true,
+        "kitDePericia": false,
+        "exigenciaKitId": null
+      },
+      {
+        "id_teste": 103,
+        "nome": "Escapar",
+        "descricao": "Escapa de amarras: DT = (teste de Agilidade de quem amarrou) +10 (cordas) ou DT 30 (algemas). Ação completa.",
+        "dt": {
+          "oficiais": [
+            30
+          ],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": null,
+        "penalidadeDeCarga": true,
+        "kitDePericia": false,
+        "exigenciaKitId": null
+      },
+      {
+        "id_teste": 104,
+        "nome": "Levantar-se Rapidamente",
+        "descricao": "Se estiver caído e tiver ação de movimento, teste para levantar como ação livre. Falha: gasta a ação e continua caído.",
+        "dt": {
+          "oficiais": [
+            20
+          ],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": "treinado",
+        "penalidadeDeCarga": true,
+        "kitDePericia": false,
+        "exigenciaKitId": null
+      },
+      {
+        "id_teste": 105,
+        "nome": "Passar por Espaço Apertado",
+        "descricao": "Espremer-se por espaço muito estreito; ação completa e anda metade do deslocamento.",
+        "dt": {
+          "oficiais": [
+            25
+          ],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": "treinado",
+        "penalidadeDeCarga": true,
+        "kitDePericia": false,
+        "exigenciaKitId": null
+      },
+      {
+        "id_teste": 106,
+        "nome": "Passar por Inimigo",
+        "descricao": "Atravessa espaço de um inimigo como parte do movimento: teste oposto contra Acrobacia, Iniciativa ou Luta do oponente (o melhor). Falha encerra movimento; espaço conta como terreno difícil.",
+        "dt": {
+          "oficiais": [],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": null,
+        "penalidadeDeCarga": true,
+        "kitDePericia": false,
+        "exigenciaKitId": null
+      }
+    ],
+    "fonte": "Perícias OP.pdf",
+    "status": "ok"
+  },
+  {
+    "id": 2,
+    "nome": "Adestramento",
+    "atributoId": 4,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 3,
+    "nome": "Artes",
+    "atributoId": 4,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 4,
+    "nome": "Atletismo",
+    "atributoId": 1,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 5,
+    "nome": "Atualidades",
+    "atributoId": 3,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 6,
+    "nome": "Ciências",
+    "atributoId": 3,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 7,
+    "nome": "Crime",
+    "atributoId": 2,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 8,
+    "nome": "Diplomacia",
+    "atributoId": 4,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 9,
+    "nome": "Enganação",
+    "atributoId": 4,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 10,
+    "nome": "Fortitude",
+    "atributoId": 5,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 11,
+    "nome": "Furtividade",
+    "atributoId": 2,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 12,
+    "nome": "Iniciativa",
+    "atributoId": 2,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 13,
+    "nome": "Intimidação",
+    "atributoId": 4,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 14,
+    "nome": "Intuição",
+    "atributoId": 4,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 15,
+    "nome": "Investigação",
+    "atributoId": 3,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 16,
+    "nome": "Luta",
+    "atributoId": 1,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 17,
+    "nome": "Medicina",
+    "atributoId": 3,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 18,
+    "nome": "Ocultismo",
+    "atributoId": 3,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 19,
+    "nome": "Percepção",
+    "atributoId": 4,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 20,
+    "nome": "Pilotagem",
+    "atributoId": 2,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 21,
+    "nome": "Pontaria",
+    "atributoId": 2,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 22,
+    "nome": "Profissão",
+    "atributoId": 3,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 23,
+    "nome": "Reflexos",
+    "atributoId": 2,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 24,
+    "nome": "Religião",
+    "atributoId": 4,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 25,
+    "nome": "Sobrevivência",
+    "atributoId": 3,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 26,
+    "nome": "Tática",
+    "atributoId": 3,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 27,
+    "nome": "Tecnologia",
+    "atributoId": 3,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  },
+  {
+    "id": 28,
+    "nome": "Vontade",
+    "atributoId": 4,
+    "descricao": null,
+    "nivelTreinamento": null,
+    "bonusTreinamento": null,
+    "exigenciaTreinamento": null,
+    "penalidadeDeCarga": null,
+    "kitDePericia": null,
+    "exigenciaKitId": null,
+    "dt": {
+      "oficiais": [],
+      "incluiLivre": true,
+      "incluiNenhuma": true
+    },
+    "testes": [],
+    "fonte": "Perícias OP.pdf",
+    "status": "pendente_de_extracao"
+  }
+]

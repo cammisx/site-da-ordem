@@ -11,6 +11,7 @@ import {
 } from "./lib/uiSounds";
 
 import { auth, authApi, googleProvider } from "./lib/firebase";
+import { listByCategory, getById } from "./lib/dataIndex";
 
 function clampIndex(i, len) {
   if (len <= 0) return 0;
@@ -336,13 +337,6 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
     []
   );
 
-  const [focus, setFocus] = useState("menu"); // menu | list
-  const [selectedMenu, setSelectedMenu] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedItemKey, setSelectedItemKey] = useState(null);
-  const [menuIndex, setMenuIndex] = useState(0);
-  const [listIndex, setListIndex] = useState(0);
-
   const FILE_CATEGORIES = useMemo(
     () => [
       { key: "origens", label: "ORIGENS" },
@@ -354,61 +348,90 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
     []
   );
 
-  const FILE_ITEMS = useMemo(
-    () => ({
-      origens: [
-        { key: "civil", label: "CIVIL" },
-        { key: "agente", label: "AGENTE" },
-        { key: "cultista", label: "CULTISTA" },
-        { key: "sobrevivente", label: "SOBREVIVENTE" },
-      ],
-      classes: [
-        { key: "combatente", label: "COMBATENTE" },
-        { key: "especialista", label: "ESPECIALISTA" },
-        { key: "ocultista", label: "OCULTISTA" },
-      ],
-      pericias: [
-        { key: "atletismo", label: "ATLETISMO" },
-        { key: "investigacao", label: "INVESTIGAÇÃO" },
-        { key: "furtividade", label: "FURTIVIDADE" },
-        { key: "ocultismo", label: "OCULTISMO" },
-      ],
-      equipamentos: [
-        { key: "arma_branca", label: "ARMA BRANCA" },
-        { key: "arma_fogo", label: "ARMA DE FOGO" },
-        { key: "protecao", label: "PROTEÇÃO" },
-        { key: "utilitarios", label: "UTILITÁRIOS" },
-      ],
-      rituais: [
-        { key: "conhecimento", label: "CONHECIMENTO" },
-        { key: "energia", label: "ENERGIA" },
-        { key: "morte", label: "MORTE" },
-        { key: "sangue", label: "SANGUE" },
-      ],
-    }),
-    []
-  );
+  const [focus, setFocus] = useState("menu"); // menu | list
+  const [selectedMenu, setSelectedMenu] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null); // arquivos: origens/classes/...
+  const [selectedItemId, setSelectedItemId] = useState(null); // id do item dentro da categoria (ou da investigação)
+  const [menuIndex, setMenuIndex] = useState(0);
+  const [listIndex, setListIndex] = useState(0);
 
   const list = useMemo(() => {
     if (!selectedMenu) return [];
-    if (selectedMenu === "investigacoes") return INVESTIGACOES;
+
+    if (selectedMenu === "investigacoes") {
+      return INVESTIGACOES;
+    }
 
     if (selectedMenu === "arquivos") {
-      // 1º nível: categorias; 2º nível: itens dentro da categoria
+      // 1º nível: categorias; 2º nível: itens da categoria (vindos do JSON)
       if (!selectedCategory) return FILE_CATEGORIES;
-      return FILE_ITEMS[selectedCategory] || [];
+      return listByCategory(selectedCategory).map((it) => ({
+        key: it.id,
+        label: it.nome,
+        data: it,
+      }));
     }
 
     return [];
-  }, [selectedMenu, selectedCategory, INVESTIGACOES, FILE_CATEGORIES, FILE_ITEMS]);
+  }, [selectedMenu, selectedCategory, INVESTIGACOES, FILE_CATEGORIES]);
 
-  const activeItem = list.find((x) => x.key === selectedItemKey) || list[listIndex];
+  const userLabel = user?.displayName || user?.email || "AGENTE";
+
+  const selectedItem = useMemo(() => {
+    if (!selectedMenu) return null;
+
+    if (selectedMenu === "investigacoes") {
+      if (!selectedItemId) return null;
+      return INVESTIGACOES.find((x) => x.key === selectedItemId) || null;
+    }
+
+    if (selectedMenu === "arquivos") {
+      if (!selectedCategory || !selectedItemId) return null;
+      const data = getById(selectedCategory, selectedItemId);
+      if (!data) return null;
+      return { key: data.id, label: data.nome, data };
+    }
+
+    return null;
+  }, [selectedMenu, selectedCategory, selectedItemId, INVESTIGACOES]);
+
+  const pickMenu = (key) => {
+    setSelectedMenu(key);
+    setSelectedCategory(null);
+    setSelectedItemId(null);
+    setListIndex(0);
+
+    if (key === "sair") {
+      onNoise(playClick);
+      return onLogout();
+    }
+
+    setFocus("list");
+    onNoise(playBeep);
+  };
+
+  const pickList = (idx) => {
+    const it = list[idx];
+    if (!it) return;
+
+    // Arquivos: primeiro click escolhe categoria; segundo click escolhe item
+    if (selectedMenu === "arquivos" && !selectedCategory) {
+      setSelectedCategory(it.key);
+      setSelectedItemId(null);
+      setListIndex(0);
+      onNoise(playBeep);
+      return;
+    }
+
+    setSelectedItemId(it.key);
+    onNoise(playBeep);
+  };
 
   useKeyDown(
     (e) => {
       const key = e.key;
 
-      // navegação global
+      // global: som
       if (key === "F8") {
         e.preventDefault();
         onNoise(playClick);
@@ -429,12 +452,7 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
         }
         if (key === "Enter") {
           e.preventDefault();
-          onNoise(playBeep);
-          const m = MENU[menuIndex].key;
-          setSelectedMenu(m);
-          if (m === "sair") return onLogout();
-          setFocus("list");
-          setListIndex(0);
+          pickMenu(MENU[menuIndex].key);
         }
         return;
       }
@@ -447,7 +465,7 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
           // Arquivos: ESC volta do 2º nível (itens) para categorias
           if (selectedMenu === "arquivos" && selectedCategory) {
             setSelectedCategory(null);
-            setSelectedItemKey(null);
+            setSelectedItemId(null);
             setListIndex(0);
             return;
           }
@@ -455,6 +473,7 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
           setFocus("menu");
           return;
         }
+
         if (key === "ArrowDown") {
           e.preventDefault();
           onNoise(playClick);
@@ -467,27 +486,15 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
         }
         if (key === "Enter") {
           e.preventDefault();
-          const picked = MENU[menuIndex].key;
-          setSelectedMenu(picked);
-          setSelectedCategory(null);
-          setSelectedItemKey(null);
-
-          if (picked === "sair") {
-            onNoise(playClick);
-            return onLogout();
-          }
-
-          setFocus("list");
-          setListIndex(0);
-          onNoise(playBeep);
+          pickList(listIndex);
         }
       }
     },
-    [focus, menuIndex, listIndex, selectedMenu, soundEnabled, list]
+    [focus, menuIndex, listIndex, selectedMenu, selectedCategory, list, soundEnabled]
   );
 
   const title = "ORDEM.EXE — TERMINAL DE ARQUIVOS";
-  const userLabel = user?.displayName || user?.email || "AGENTE";
+
 
   return (
     <div className="login-desktop" aria-label="terminal">
@@ -528,19 +535,9 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
                     <li
                       key={m.key}
                       className={`menu-item ${active ? "is-active" : ""} ${chosen ? "is-chosen" : ""}`}
-                      onMouseEnter={() => {
-                        setMenuIndex(idx);
-                      }}
+                      onMouseEnter={() => setMenuIndex(idx)}
                       onMouseDown={() => onNoise(playClick)}
-                      onClick={() => {
-                        setSelectedMenu(m.key);
-                        setSelectedCategory(null);
-                        setSelectedItemKey(null);
-                        if (m.key === "sair") return onLogout();
-                        setFocus("list");
-                        setListIndex(0);
-                        onNoise(playBeep);
-                      }}
+                      onClick={() => pickMenu(m.key)}
                       role="option"
                       aria-selected={chosen}
                     >
@@ -552,40 +549,34 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
             </div>
 
             <div className="menu-col">
-              <div className="menu-title">ITENS{selectedMenu === "arquivos" && selectedCategory ? ` — ${FILE_CATEGORIES.find(c=>c.key===selectedCategory)?.label || ""}` : ""}</div>
+              <div className="menu-title">
+                ITENS
+                {selectedMenu === "arquivos" && selectedCategory
+                  ? ` — ${FILE_CATEGORIES.find((c) => c.key === selectedCategory)?.label || ""}`
+                  : ""}
+              </div>
               <ul className="menu-list" aria-label="itens" role="listbox">
                 {list.length === 0 ? (
                   <li className="menu-item dim">Selecione um diretório…</li>
                 ) : (
                   list.map((it, idx) => {
                     const active = idx === listIndex && focus === "list";
+                    const chosen = selectedItemId === it.key;
                     return (
                       <li
                         key={it.key}
-                        className={`menu-item ${active ? "is-active" : ""}`}
+                        className={`menu-item ${active ? "is-active" : ""} ${chosen ? "is-chosen" : ""}`}
                         onMouseEnter={() => setListIndex(idx)}
                         onMouseDown={() => onNoise(playClick)}
                         onClick={() => {
                           setFocus("list");
                           setListIndex(idx);
-                          const picked = it.key;
-
-                          // Arquivos: clique/enter em categoria abre a lista de itens
-                          if (selectedMenu === "arquivos" && !selectedCategory) {
-                            setSelectedCategory(picked);
-                            setSelectedItemKey(null);
-                            setListIndex(0);
-                            onNoise(playBeep);
-                            return;
-                          }
-
-                          setSelectedItemKey(picked);
-                          onNoise(playBeep);
+                          pickList(idx);
                         }}
                         role="option"
-                        aria-selected={active}
+                        aria-selected={chosen}
                       >
-                        {active ? "▮" : " "} {it.label}
+                        {active ? "▮" : "  "} {it.label}
                       </li>
                     );
                   })
@@ -598,15 +589,45 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
               <div className="panel-body">
                 {!selectedMenu ? (
                   <div className="dim">Selecione um diretório…</div>
-                ) : !activeItem ? (
+                ) : selectedMenu === "arquivos" && !selectedCategory ? (
+                  <div className="dim">Escolha uma categoria à esquerda.</div>
+                ) : !selectedItem ? (
                   <div className="dim">Nenhum item selecionado.</div>
                 ) : (
                   <>
-                    <div className="panel-heading">{activeItem.label}</div>
-                    <div className="panel-text">
-                      Conteúdo temporário. Aqui entra a descrição, opções e links desse item.
-                    </div>
-                    <div className="panel-text dim">Dica: ENTER confirma • ESC fecha painel</div>
+                    <div className="panel-heading">{selectedItem.label}</div>
+
+                    {selectedMenu === "arquivos" && selectedItem.data ? (
+                      <>
+                        {selectedItem.data.gancho_resumo && (
+                          <div className="panel-text">{selectedItem.data.gancho_resumo}</div>
+                        )}
+
+                        {selectedItem.data.atributo_base && (
+                          <div className="panel-text"><span className="dim">Atributo-base:</span> {selectedItem.data.atributo_base}</div>
+                        )}
+
+                        {selectedItem.data.pericias_treinadas && (
+                          <div className="panel-text"><span className="dim">Perícias treinadas:</span> {selectedItem.data.pericias_treinadas}</div>
+                        )}
+
+                        {selectedItem.data.poder_nome && (
+                          <div className="panel-text"><span className="dim">Poder:</span> {selectedItem.data.poder_nome}</div>
+                        )}
+
+                        {selectedItem.data.fonte && (
+                          <div className="panel-text dim">Fonte: {selectedItem.data.fonte}</div>
+                        )}
+
+                        {!selectedItem.data.gancho_resumo && !selectedItem.data.atributo_base && !selectedItem.data.pericias_treinadas && !selectedItem.data.poder_nome && (
+                          <div className="panel-text">Sem dados adicionais ainda.</div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="panel-text">Conteúdo temporário.</div>
+                    )}
+
+                    <div className="panel-text dim">Dica: ENTER seleciona • ESC volta</div>
                   </>
                 )}
               </div>

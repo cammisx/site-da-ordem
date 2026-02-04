@@ -1,0 +1,187 @@
+[
+  {
+    "id": 1,
+    "nome": "Acadêmico",
+    "slug": "academico",
+    "periciasTreinadas": [6, 15],
+    "poder": { "id": 110, "nome": "Saber é Poder" }
+  },
+  {
+    "id": 2,
+    "nome": "Agente de Saúde",
+    "slug": "agente-de-saude",
+    "periciasTreinadas": [14, 17],
+    "poder": { "id": 120, "nome": "Técnica Medicinal" }
+  },
+  {
+    "id": 3,
+    "nome": "Amnésico",
+    "slug": "amnesico",
+    "periciasTreinadas": {
+      "tipo": "escolha_do_mestre",
+      "quantidade": 2
+    },
+    "poder": { "id": 130, "nome": "Vislumbres do Passado" }
+  },
+  {
+    "id": 4,
+    "nome": "Artista",
+    "slug": "artista",
+    "periciasTreinadas": [3, 9],
+    "poder": { "id": 140, "nome": "Magnum Opus" }
+  },
+  {
+    "id": 5,
+    "nome": "Atleta",
+    "slug": "atleta",
+    "periciasTreinadas": [1, 4],
+    "poder": { "id": 150, "nome": "1.1" }
+  },
+  {
+    "id": 6,
+    "nome": "Chef",
+    "slug": "chef",
+    "periciasTreinadas": [10, 22],
+    "poder": { "id": 160, "nome": "Ingrediente Secreto" }
+  },
+  {
+    "id": 7,
+    "nome": "Criminoso",
+    "slug": "criminoso",
+    "periciasTreinadas": [7, 11],
+    "poder": { "id": 170, "nome": "O Crime Compensa" }
+  },
+  {
+    "id": 8,
+    "nome": "Cultista Arrependido",
+    "slug": "cultista-arrependido",
+    "periciasTreinadas": [18, 24],
+    "poder": { "id": 180, "nome": "Traços do Outro Lado" }
+  },
+  {
+    "id": 9,
+    "nome": "Desgarrado",
+    "slug": "desgarrado",
+    "periciasTreinadas": [10, 25],
+    "poder": { "id": 190, "nome": "Calejado" }
+  },
+  {
+    "id": 10,
+    "nome": "Engenheiro",
+    "slug": "engenheiro",
+    "periciasTreinadas": [22, 27],
+    "poder": { "id": 1010, "nome": "Ferramentas Favoritas" }
+  },
+  {
+    "id": 11,
+    "nome": "Executivo",
+    "slug": "executivo",
+    "periciasTreinadas": [8, 22],
+    "poder": { "id": 1110, "nome": "Processo Otimizado" }
+  },
+  {
+    "id": 12,
+    "nome": "Investigador",
+    "slug": "investigador",
+    "periciasTreinadas": [15, 19],
+    "poder": { "id": 1120, "nome": "Faro para Pistas" }
+  },
+  {
+    "id": 13,
+    "nome": "Lutador",
+    "slug": "lutador",
+    "periciasTreinadas": [16, 23],
+    "poder": { "id": 1130, "nome": "Mão Pesada" }
+  },
+  {
+    "id": 14,
+    "nome": "Magnata",
+    "slug": "magnata",
+    "periciasTreinadas": [8, 20],
+    "poder": { "id": 1140, "nome": "Patrocinador da Ordem" }
+  },
+  {
+    "id": 15,
+    "nome": "Mercenário",
+    "slug": "mercenario",
+    "periciasTreinadas": [12, 13],
+    "poder": { "id": 1150, "nome": "Posição de Combate" }
+  },
+  {
+    "id": 16,
+    "nome": "Militar",
+    "slug": "militar",
+    "periciasTreinadas": [21, 26],
+    "poder": { "id": 1160, "nome": "Para Bellum" }
+  },
+  {
+    "id": 17,
+    "nome": "Operário",
+    "slug": "operario",
+    "periciasTreinadas": [10, 22],
+    "poder": { "id": 1170, "nome": "Ferramenta de Trabalho" }
+  },
+  {
+    "id": 18,
+    "nome": "Policial",
+    "slug": "policial",
+    "periciasTreinadas": [19, 21],
+    "poder": { "id": 1180, "nome": "Patrulha" }
+  },
+  {
+    "id": 19,
+    "nome": "Religioso",
+    "slug": "religioso",
+    "periciasTreinadas": [24, 28],
+    "poder": { "id": 1190, "nome": "Acalentar" }
+  },
+  {
+    "id": 20,
+    "nome": "Servidor Público",
+    "slug": "servidor-publico",
+    "periciasTreinadas": [14, 28],
+    "poder": { "id": 1200, "nome": "Espírito Cívico" }
+  },
+  {
+    "id": 21,
+    "nome": "Teórico da Conspiração",
+    "slug": "teorico-da-conspiracao",
+    "periciasTreinadas": [15, 18],
+    "poder": { "id": 1210, "nome": "Eu Já Sabia" }
+  },
+  {
+    "id": 22,
+    "nome": "T.I.",
+    "slug": "t-i",
+    "periciasTreinadas": [15, 27],
+    "poder": { "id": 1220, "nome": "Motor de Busca" }
+  },
+  {
+    "id": 23,
+    "nome": "Trabalhador Rural",
+    "slug": "trabalhador-rural",
+    "periciasTreinadas": [2, 25],
+    "poder": { "id": 1230, "nome": "Desbravador" }
+  },
+  {
+    "id": 24,
+    "nome": "Trambiqueiro",
+    "slug": "trambiqueiro",
+    "periciasTreinadas": [7, 9],
+    "poder": { "id": 1240, "nome": "Impostor" }
+  },
+  {
+    "id": 25,
+    "nome": "Universitário",
+    "slug": "universitario",
+    "periciasTreinadas": [5, 15],
+    "poder": { "id": 1250, "nome": "Dedicação" }
+  },
+  {
+    "id": 26,
+    "nome": "Vítima",
+    "slug": "vitima",
+    "periciasTreinadas": [23, 28],
+    "poder": { "id": 1260, "nome": "Cicatrizes Psicológicas" }
+  }
+]

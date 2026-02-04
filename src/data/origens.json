@@ -1,0 +1,236 @@
+[
+  {
+    "id": "origem_academico",
+    "nome": "Acadêmico",
+    "gancho_resumo": "Pesquisador/professor com histórico de estudos que roçaram o inexplicável.",
+    "pericias_treinadas": "Ciências e Investigação",
+    "poder_nome": "Saber é Poder",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.26)"
+  },
+  {
+    "id": "origem_agente_de_saude",
+    "nome": "Agente de Saúde",
+    "gancho_resumo": "Profissional da saúde que aprendeu a manter a calma em situações extremas.",
+    "pericias_treinadas": "Intuição e Medicina",
+    "poder_nome": "Técnica Medicinal",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.26)"
+  },
+  {
+    "id": "origem_amnesico",
+    "nome": "Amnésico",
+    "gancho_resumo": "Agente com memória fragmentada e pistas do próprio passado surgindo em missões.",
+    "pericias_treinadas": "Duas à escolha do mestre",
+    "poder_nome": "Vislumbres do Passado",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.26)"
+  },
+  {
+    "id": "origem_artista",
+    "nome": "Artista",
+    "gancho_resumo": "Criador(a) cuja obra e fama se cruzam com experiências estranhas.",
+    "pericias_treinadas": "Artes e Enganação",
+    "poder_nome": "Magnum Opus",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.27)"
+  },
+  {
+    "id": "origem_atleta",
+    "nome": "Atleta",
+    "gancho_resumo": "Competidor(a) que leva o corpo ao limite e usa isso a favor da Ordem.",
+    "pericias_treinadas": "Acrobacia e Atletismo",
+    "poder_nome": "110%",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.27)"
+  },
+  {
+    "id": "origem_chef",
+    "nome": "Chef",
+    "gancho_resumo": "Cozinheiro(a) que fortalece o grupo nos intervalos e interlúdios.",
+    "pericias_treinadas": "Fortitude e Profissão (co-",
+    "poder_nome": "zinheiro)",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.27)"
+  },
+  {
+    "id": "origem_criminoso",
+    "nome": "Criminoso",
+    "gancho_resumo": "Ex-fora-da-lei recrutado(a) por talento — e conveniência — da Ordem.",
+    "pericias_treinadas": null,
+    "poder_nome": null,
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.27)"
+  },
+  {
+    "id": "origem_cultista_arrependido",
+    "nome": "Cultista Arrependido",
+    "gancho_resumo": "Ex-integrante de culto paranormal, agora do lado da Realidade.",
+    "pericias_treinadas": "Profissão e Tecnologia",
+    "poder_nome": "Ferramenta Favorita",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.28)"
+  },
+  {
+    "id": "origem_desgarrado",
+    "nome": "Desgarrado",
+    "gancho_resumo": "Sobrevivente fora do padrão social, endurecido(a) pela vida difícil.",
+    "pericias_treinadas": "Diplomacia e Profissão",
+    "poder_nome": null,
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.28)"
+  },
+  {
+    "id": "origem_engenheiro",
+    "nome": "Engenheiro",
+    "gancho_resumo": "Mão na massa: resolve com ferramentas, invenções e gambiarra.",
+    "pericias_treinadas": "Crime e Furtividade",
+    "poder_nome": "O Crime Compensa",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.28)"
+  },
+  {
+    "id": "origem_executivo",
+    "nome": "Executivo",
+    "gancho_resumo": "Burocrata/corporativo que descobriu algo que não devia e virou agente de campo.",
+    "pericias_treinadas": "Ocultismo e Religião. vida era bastante normal, até que você descobriu",
+    "poder_nome": "algo que não devia",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.28)"
+  },
+  {
+    "id": "origem_investigador",
+    "nome": "Investigador",
+    "gancho_resumo": "Detetive/perito que vive de pistas, padrões e conexões.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_lutador",
+    "nome": "Lutador",
+    "gancho_resumo": "Combatente treinado em briga/arte marcial, especialista em pancadaria.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_magnata",
+    "nome": "Magnata",
+    "gancho_resumo": "Patrocinador(a) com recursos e influência a serviço da Ordem.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_mercenario",
+    "nome": "Mercenário",
+    "gancho_resumo": "Profissional de combate acostumado(a) a agir rápido no primeiro movimento.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_militar",
+    "nome": "Militar",
+    "gancho_resumo": "Treino formal e disciplina, com foco em armas de fogo.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_operario",
+    "nome": "Operário",
+    "gancho_resumo": "Trabalhador braçal pragmático que transforma ferramenta em arma.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_policial",
+    "nome": "Policial",
+    "gancho_resumo": "Experiência em segurança pública e reflexos de patrulha.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_religioso",
+    "nome": "Religioso",
+    "gancho_resumo": "Fé e acolhimento como resistência contra o horror.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_servidor_publico",
+    "nome": "Servidor Público",
+    "gancho_resumo": "Rotina burocrática quebrada ao topar com corrupção paranormal.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_teorico_da_conspiracao",
+    "nome": "Teórico da Conspiração",
+    "gancho_resumo": "Obcecado(a) por “verdades escondidas” — e algumas eram reais.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_t_i_",
+    "nome": "T.I.",
+    "gancho_resumo": "Especialista em sistemas: investiga, rastreia e substitui testes com tecnologia.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_trabalhador_rural",
+    "nome": "Trabalhador Rural",
+    "gancho_resumo": "Vivência no campo e com animais; navega terreno difícil com facilidade.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_trambiqueiro",
+    "nome": "Trambiqueiro",
+    "gancho_resumo": "Golpista carismático(a) que troca perícia por lábia quando precisa.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_universitario",
+    "nome": "Universitário",
+    "gancho_resumo": "Estudante recrutado(a) após esbarrar num achado perigoso.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  },
+  {
+    "id": "origem_vitima",
+    "nome": "Vítima",
+    "gancho_resumo": "Sobrevivente de um encontro traumático com o paranormal.",
+    "pericias_treinadas": "Investigação e Percepção",
+    "poder_nome": "Perícias treinadas",
+    "tags": "origem",
+    "fonte": "Livro de Regras v1.3 (p.29)"
+  }
+]
