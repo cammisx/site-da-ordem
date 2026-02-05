@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "sigla": "FOR",
+    "nome": "Força"
+  },
+  {
+    "id": 2,
+    "sigla": "DES",
+    "nome": "Destreza"
+  },
+  {
+    "id": 3,
+    "sigla": "INT",
+    "nome": "Intelecto"
+  },
+  {
+    "id": 4,
+    "sigla": "PRE",
+    "nome": "Presença"
+  },
+  {
+    "id": 5,
+    "sigla": "VIG",
+    "nome": "Vigor"
+  }
+]

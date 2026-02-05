@@ -12,6 +12,7 @@ import {
 
 import { auth, authApi, googleProvider } from "./lib/firebase";
 import { listByCategory, getById } from "./lib/dataIndex";
+import PericiaPanel from "./components/panels/PericiaPanel";
 
 function clampIndex(i, len) {
   if (len <= 0) return 0;
@@ -599,29 +600,33 @@ function MainMenu({ user, onLogout, onNoise, soundEnabled, setSound }) {
 
                     {selectedMenu === "arquivos" && selectedItem.data ? (
                       <>
-                        {selectedItem.data.gancho_resumo && (
-                          <div className="panel-text">{selectedItem.data.gancho_resumo}</div>
+                        {selectedCategory === "pericias" ? (
+                          <PericiaPanel pericia={selectedItem.data} />
+                        ) : (
+                          <>
+                            {selectedItem.data.gancho_resumo && (
+                              <div className="panel-text">{selectedItem.data.gancho_resumo}</div>
+                            )}
+
+                            {selectedItem.data.atributo_base && (
+                              <div className="panel-text"><span className="dim">Atributo-base:</span> {selectedItem.data.atributo_base}</div>
+                            )}
+
+                            {selectedItem.data.pericias_treinadas && (
+                              <div className="panel-text"><span className="dim">Perícias treinadas:</span> {selectedItem.data.pericias_treinadas}</div>
+                            )}
+
+                            {selectedItem.data.poder_nome && (
+                              <div className="panel-text"><span className="dim">Poder:</span> {selectedItem.data.poder_nome}</div>
+                            )}
+
+                            {selectedItem.data.fonte && (
+                              <div className="panel-text dim">Fonte: {selectedItem.data.fonte}</div>
+                            )}
+
+                          </>
                         )}
 
-                        {selectedItem.data.atributo_base && (
-                          <div className="panel-text"><span className="dim">Atributo-base:</span> {selectedItem.data.atributo_base}</div>
-                        )}
-
-                        {selectedItem.data.pericias_treinadas && (
-                          <div className="panel-text"><span className="dim">Perícias treinadas:</span> {selectedItem.data.pericias_treinadas}</div>
-                        )}
-
-                        {selectedItem.data.poder_nome && (
-                          <div className="panel-text"><span className="dim">Poder:</span> {selectedItem.data.poder_nome}</div>
-                        )}
-
-                        {selectedItem.data.fonte && (
-                          <div className="panel-text dim">Fonte: {selectedItem.data.fonte}</div>
-                        )}
-
-                        {!selectedItem.data.gancho_resumo && !selectedItem.data.atributo_base && !selectedItem.data.pericias_treinadas && !selectedItem.data.poder_nome && (
-                          <div className="panel-text">Sem dados adicionais ainda.</div>
-                        )}
                       </>
                     ) : (
                       <div className="panel-text">Conteúdo temporário.</div>

@@ -180,41 +180,48 @@
     "id": 5,
     "nome": "Atualidades",
     "atributoId": 3,
-    "descricao": null,
+    "descricao": "Você é um conhecedor de assuntos gerais (política, esporte, entretenimento etc.) e pode responder dúvidas sobre esses temas. A dificuldade depende do quão comum é a informação: DT 15 para coisas comuns, DT 20 para informações específicas e DT 25 para informações raras ou quase desconhecidas.",
     "nivelTreinamento": null,
     "bonusTreinamento": null,
     "exigenciaTreinamento": null,
-    "penalidadeDeCarga": null,
-    "kitDePericia": null,
+    "penalidadeDeCarga": false,
+    "kitDePericia": false,
     "exigenciaKitId": null,
     "dt": {
-      "oficiais": [],
+      "oficiais": [
+        15,
+        20,
+        25
+      ],
       "incluiLivre": true,
       "incluiNenhuma": true
     },
     "testes": [],
     "fonte": "Perícias OP.pdf",
-    "status": "pendente_de_extracao"
+    "status": "ok"
   },
   {
     "id": 6,
     "nome": "Ciências",
     "atributoId": 3,
-    "descricao": null,
+    "descricao": "Você estudou campos científicos (como matemática, física, química e biologia) e usa isso para responder dúvidas e analisar fenômenos. Questões simples e conhecimento comum podem não exigir teste. Para questões técnicas, use DT 20 como referência; para temas raros, experimentais ou de fronteira, use DT 30 como referência.",
     "nivelTreinamento": null,
     "bonusTreinamento": null,
     "exigenciaTreinamento": null,
-    "penalidadeDeCarga": null,
-    "kitDePericia": null,
+    "penalidadeDeCarga": false,
+    "kitDePericia": false,
     "exigenciaKitId": null,
     "dt": {
-      "oficiais": [],
+      "oficiais": [
+        20,
+        30
+      ],
       "incluiLivre": true,
       "incluiNenhuma": true
     },
     "testes": [],
     "fonte": "Perícias OP.pdf",
-    "status": "pendente_de_extracao"
+    "status": "ok"
   },
   {
     "id": 7,
@@ -300,21 +307,54 @@
     "id": 11,
     "nome": "Furtividade",
     "atributoId": 2,
-    "descricao": null,
+    "descricao": "Você sabe se esconder, se mover silenciosamente e evitar ser notado. Furtividade é usada para se esconder de inimigos, se aproximar sem ser percebido ou se mover em silêncio. A DT depende das condições do ambiente e da atenção de quem pode percebê-lo. Superfícies barulhentas, iluminação forte ou poucos obstáculos aumentam a DT; escuridão, cobertura e distrações reduzem a dificuldade.",
     "nivelTreinamento": null,
     "bonusTreinamento": null,
     "exigenciaTreinamento": null,
-    "penalidadeDeCarga": null,
-    "kitDePericia": null,
+    "penalidadeDeCarga": true,
+    "kitDePericia": false,
     "exigenciaKitId": null,
     "dt": {
       "oficiais": [],
       "incluiLivre": true,
       "incluiNenhuma": true
     },
-    "testes": [],
+    "testes": [
+      {
+        "id_teste": 1101,
+        "nome": "Esconder-se",
+        "descricao": "Você se esconde para não ser visto. Faça um teste de Furtividade oposto ao teste de Percepção das criaturas que podem observá-lo. Você permanece escondido até se mover para fora da cobertura ou chamar atenção.",
+        "dt": {
+          "oficiais": [],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": null,
+        "penalidadeDeCarga": true,
+        "kitDePericia": false,
+        "exigenciaKitId": null
+      },
+      {
+        "id_teste": 1102,
+        "nome": "Mover-se em Silêncio",
+        "descricao": "Você se desloca sem fazer barulho. A DT depende da superfície: DT 10 em terreno macio, DT 15 em piso comum e DT 20 em superfícies barulhentas. Você pode aceitar -1d20 no teste para se mover em deslocamento total em vez de metade do deslocamento.",
+        "dt": {
+          "oficiais": [
+            10,
+            15,
+            20
+          ],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": null,
+        "penalidadeDeCarga": true,
+        "kitDePericia": false,
+        "exigenciaKitId": null
+      }
+    ],
     "fonte": "Perícias OP.pdf",
-    "status": "pendente_de_extracao"
+    "status": "ok"
   },
   {
     "id": 12,
@@ -420,21 +460,70 @@
     "id": 17,
     "nome": "Medicina",
     "atributoId": 3,
-    "descricao": null,
+    "descricao": "Você sabe tratar ferimentos, diagnosticar doenças e prestar primeiros socorros. Medicina é usada para estabilizar personagens feridos, identificar causas de morte ou analisar condições físicas. Alguns usos exigem um kit médico; sem ele, a rolagem ainda pode acontecer (com aviso no rolador), conforme a mesa preferir.",
     "nivelTreinamento": null,
     "bonusTreinamento": null,
     "exigenciaTreinamento": null,
-    "penalidadeDeCarga": null,
-    "kitDePericia": null,
-    "exigenciaKitId": null,
+    "penalidadeDeCarga": false,
+    "kitDePericia": true,
+    "exigenciaKitId": 1,
     "dt": {
       "oficiais": [],
       "incluiLivre": true,
       "incluiNenhuma": true
     },
-    "testes": [],
+    "testes": [
+      {
+        "id_teste": 1701,
+        "nome": "Primeiros Socorros",
+        "descricao": "Você estabiliza um personagem que esteja morrendo. Se passar, o alvo deixa de perder PV automaticamente. Este teste exige um kit médico.",
+        "dt": {
+          "oficiais": [
+            15
+          ],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": "treinado",
+        "penalidadeDeCarga": false,
+        "kitDePericia": true,
+        "exigenciaKitId": 1
+      },
+      {
+        "id_teste": 1702,
+        "nome": "Tratar Ferimentos",
+        "descricao": "Durante um interlúdio, você trata ferimentos. Se passar, o alvo recupera 1d6 PV + 1d6 adicional para cada 5 pontos pelos quais o resultado exceder a DT. Este teste exige um kit médico.",
+        "dt": {
+          "oficiais": [
+            20
+          ],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": "veterano",
+        "penalidadeDeCarga": false,
+        "kitDePericia": true,
+        "exigenciaKitId": 1
+      },
+      {
+        "id_teste": 1703,
+        "nome": "Diagnóstico",
+        "descricao": "Você identifica a natureza de uma doença, veneno ou ferimento. A DT pode aumentar se o efeito for raro, paranormal ou experimental. O uso de um kit médico oferece melhores condições para o teste.",
+        "dt": {
+          "oficiais": [
+            15
+          ],
+          "incluiLivre": true,
+          "incluiNenhuma": true
+        },
+        "exigenciaTreinamento": null,
+        "penalidadeDeCarga": false,
+        "kitDePericia": true,
+        "exigenciaKitId": 1
+      }
+    ],
     "fonte": "Perícias OP.pdf",
-    "status": "pendente_de_extracao"
+    "status": "ok"
   },
   {
     "id": 18,

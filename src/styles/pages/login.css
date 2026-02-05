@@ -439,3 +439,99 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ===== Painel: Perícias ===== */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:2px 8px;
+  margin-right:6px;
+  border:1px solid rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.08);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.panel-subtitle{
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 700;
+  font-family: var(--font-title);
+  color: var(--ink);
+}
+
+.panel-testlist{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.panel-testitem{
+  border:1px solid rgba(0,0,0,0.22);
+  padding:10px;
+  background: rgba(0,0,0,0.04);
+}
+
+.panel-testhead{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  margin-bottom:6px;
+}
+
+.panel-testname{
+  font-weight: 800;
+  font-family: var(--font-title);
+}
+
+.panel-testbadges{
+  margin-bottom:6px;
+}
+
+
+/* ===== Scroll interno (listas e painel) ===== */
+.win95-body{
+  /* mantém a janela no mesmo tamanho; o conteúdo rola por dentro */
+  height: min(560px, calc(100vh - 160px));
+  overflow: hidden;
+
+  /* garante layout com scroll interno */
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-grid{
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  grid-template-rows: 1fr;
+}
+
+.menu-col{
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* permite overflow funcionar dentro do grid */
+}
+
+.menu-list{
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.panel-body{
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
